@@ -118,21 +118,21 @@ const v24PinLedNames =
 [
 	"LED 1", "LED 2", "LED 3", "LED 4", "LED 5", "LED 6", "LED 7", "LED 8", "LED 9", "LED 10",
 	"LED 11", "LED 12", "LED 13", "LED 14", "LED 15", "LED 16", "LED 17", "LED 18", "LED 19", "LED 20",
+	"LED 21", "LED 22", "LED 23", "LED 24", "LED 25", "LED 26", "LED 27",
 
-	"LED 21", "LED 22", "LED 23", "LED 24", "LED 25", "LED 26", "LED 27", "LED 28", "LED 29", "LED 30",
-	"LED 31", "LED 32", "LED 33", "LED 34", "LED 35", "LED 36", "LED 37", "LED 38", "LED 39", "LED 40",
-
+	"LED 28", "LED 29", "LED 30", "LED 31", "LED 32", "LED 33", "LED 34", "LED 35", "LED 36", "LED 37", "LED 38", "LED 39", "LED 40",
 	"LED 41", "LED 42", "LED 43", "LED 44", "LED 45", "LED 46", "LED 47", "LED 48", "LED 49", "LED 50",
-	"LED 51", "LED 52", "LED 53", "LED 54", "LED 55", "LED 56", "LED 57", "LED 58", "LED 59", "LED 60",
+	"LED 51", "LED 52", "LED 53", "LED 54",
 
-	"LED 61", "LED 62", "LED 63", "LED 64", "LED 65", "LED 66", "LED 67", "LED 68", "LED 69", "LED 70",
+	"LED 55", "LED 56", "LED 57", "LED 58", "LED 59", "LED 60", "LED 61", "LED 62", "LED 63", "LED 64", "LED 65", "LED 66", "LED 67", "LED 68", "LED 69", "LED 70",
 	"LED 71", "LED 72", "LED 73", "LED 74", "LED 75", "LED 76", "LED 77", "LED 78", "LED 79", "LED 80",
+	"LED 81",
 
-	"LED 81", "LED 82", "LED 83", "LED 84", "LED 85", "LED 86", "LED 87", "LED 88", "LED 89", "LED 90",
-	"LED 91", "LED 92", "LED 93", "LED 94", "LED 95", "LED 96", "LED 97", "LED 98", "LED 99", "LED 100",
+	"LED 82", "LED 83", "LED 84", "LED 85", "LED 86", "LED 87", "LED 88", "LED 89", "LED 90", "LED 91", "LED 92", "LED 93", "LED 94",
+	"LED 95", "LED 96", "LED 97", "LED 98", "LED 99", "LED 100", "LED 101", "LED 102", "LED 103", "LED 104", "LED 105", "LED 106", "LED 107", "LED 108",
 
-	"LED 101", "LED 102", "LED 103", "LED 104", "LED 105", "LED 106", "LED 107", "LED 108", "LED 109", "LED 110",
-	"LED 111", "LED 112", "LED 113", "LED 114", "LED 116", "LED 117", "LED 118", "LED 119", "LED 120"
+	"LED 109", "LED 110", "LED 111", "LED 112", "LED 113", "LED 114", "LED 115", "LED 116", "LED 117", "LED 118", "LED 119", "LED 120"
+
 ];
 
 const v24PinLedPositions =
@@ -294,6 +294,14 @@ function addChannels()
 
 	if(GPUCable) 	
 	{
+		if(ATXCable) 
+		{
+		device.createSubdevice("24PinStrimer");
+		device.setSubdeviceName("24PinStrimer", `ATX Strimer`);
+		device.setSubdeviceSize("24PinStrimer", 20, 6);
+		device.setSubdeviceLeds("24PinStrimer", v24PinLedNames, v24PinLedPositions);
+		//device.setSubdeviceImage("24PinStrimer", Image());
+		}
 		if(GPUCableType === "Dual 8 Pin") 
 		{
 			device.createSubdevice("Dual8PinStrimer");
@@ -312,14 +320,7 @@ function addChannels()
 		}
 	}
 
-	if(ATXCable) 
-	{
-		device.createSubdevice("24PinStrimer");
-		device.setSubdeviceName("24PinStrimer", `ATX Strimer`);
-		device.setSubdeviceSize("24PinStrimer", 20, 6);
-		device.setSubdeviceLeds("24PinStrimer", v24PinLedNames, v24PinLedPositions);
-		//device.setSubdeviceImage("24PinStrimer", Image());
-	}
+
 	Save_Settings();
 }
 export function Shutdown() 
