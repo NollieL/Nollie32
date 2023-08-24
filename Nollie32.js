@@ -287,21 +287,22 @@ export function Render()
 }
 function addChannels() 
 {
-	device.removeSubdevice("Dual8PinStrimer"); //Remove these so I don't make 25 of them on reload.
+	device.removeSubdevice("Dual8PinStrimer"); 
 	device.removeSubdevice("Triple8PinStrimer");
 	device.removeSubdevice("24PinStrimer");
 	channelReload = true;
 
-	if(GPUCable) 	
+	if(ATXCable) 
 	{
-		if(ATXCable) 
-		{
 		device.createSubdevice("24PinStrimer");
 		device.setSubdeviceName("24PinStrimer", `ATX Strimer`);
 		device.setSubdeviceSize("24PinStrimer", 20, 6);
 		device.setSubdeviceLeds("24PinStrimer", v24PinLedNames, v24PinLedPositions);
 		//device.setSubdeviceImage("24PinStrimer", Image());
-		}
+	}
+	if(GPUCable) 	
+	{
+
 		if(GPUCableType === "Dual 8 Pin") 
 		{
 			device.createSubdevice("Dual8PinStrimer");
