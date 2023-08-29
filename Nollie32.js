@@ -495,7 +495,7 @@ function splitHex(num) {
 
 export function Validate(endpoint)
 {
-	return endpoint.interface === -1 ;
+	return endpoint.interface === 0 ;
 }
 
 export function Image()
